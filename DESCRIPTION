@@ -1,0 +1,10 @@
+Package: paleta.dubois
+Title: Colores de W.E.B. Du Bois
+Version: 0.0.1
+Authors@R: 
+    person("Marietha", "Pérez", , "marietha.perez@gmail.com", role = c("aut", "cre"))
+Description: Paquete con la paleta de colores extraida de  Battle-Baptiste, W. and Britt Rusert (eds.) (2018) W.E.B. Du Bois's Data Portraits Visualizing Black America. The color line at the turn of the Twentieth Century. Princeton Architectural Press
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
