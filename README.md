@@ -27,15 +27,8 @@ library(paleta.dubois)
 
 ## 🎨 Uso
 
-Una vez cargado el paquete, puedes acceder a tres paletas y sus funciones asociadas:
+Una vez cargado el paquete, puedes acceder a tres paletas y sus funciones asociadas.
 
-Paletas disponibles:
-
-- paleta_c: paleta discreta (colores variados)
-
-- paleta_cam: paleta continua en amarillos
-
-- paleta_cgris: paleta continua en grises
 
 ### Acceder a paletas como vectores
 
@@ -54,19 +47,28 @@ Escalas para ggplot2 (ejemplos)
 ```r 
 library(ggplot2)
 
-ggplot(mpg, aes(displ, hwy, color = class)) +
-  geom_point(size = 3) +
+# Discretas
+penguins %>%
+  na.omit() %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm,
+             color = island)) +
+  geom_jitter(alpha = 0.5, width = 0.1, height = 0.2) +
+  geom_boxplot(alpha = 0.3) +
   scale_dubois_discreta() +
+  labs(title = "Distribución de las longitudes de aletas de pingüinos", subtitle = "Por sexo, por isla", color = "Isla", x = "Sexo", y = "Longitud en mm") +
   theme_minimal()
 
-  ggplot(mpg, aes(displ, hwy, color = cty)) +
-  geom_point(size = 3) +
-  scale_continuous_am() +
-  theme_minimal()
+# Ejemplo continua
 
-ggplot(mpg, aes(displ, hwy, color = cyl)) +
-  geom_point(size = 3) +
-  scale_continuous_gr() +
+penguins %>% 
+  na.omit() %>% 
+  ggplot(aes(x = sex, y = flipper_length_mm, color = flipper_length_mm)) + 
+  geom_jitter(alpha = 0.5, width = 0.1, height = 0.2) + 
+  geom_boxplot(alpha = 0.3) + 
+  scale_continuous_am() +  # Usar la paleta continua
+  labs(title = "Distribución de las longitudes de aletas de pingüinos", 
+       subtitle = "Por sexo, por longitud de aleta", color = "Longitud", 
+       x = "Sexo", y = "Longitud en mm") + 
   theme_minimal()
   
 ```
